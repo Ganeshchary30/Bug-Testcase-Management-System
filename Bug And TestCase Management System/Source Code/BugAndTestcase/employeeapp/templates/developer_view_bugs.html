@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Bug And Testcase Management System</title>
+    <link rel="icon" href="{% static 'img/bugs.jpg' %}" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" />
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" />
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}" />
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+      /* Card styling */
+      .screenshot-container {
+        width: 310px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f9f9f9;
+      }
+
+      .screenshot-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @media (max-width: 768px) {
+        .screenshot-container {
+          width: 150px;
+          height: 150px;
+        }
+      }
+
+      /* Card layout */
+      .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .card-body {
+        flex-grow: 1;
+        overflow: auto;
+      }
+
+      /* Footer styling */
+      .footer-area {
+        padding: 20px 0;
+        background-color: #f8f8f8;
+      }
+
+      .footer-area .single-footer-widget {
+        margin-bottom: 10px;
+      }
+
+      .copyright_part_text {
+        padding: 10px 0;
+        font-size: 14px;
+      }
+
+      .copyright_part_text p {
+        margin: 0;
+        color: #555;
+        text-align: center;
+      }
+
+      .animation_icon_2 {
+        width: 60px;
+        height: auto;
+      }
+
+      /* General styling */
+      h2 {
+        margin-bottom: 30px;
+      }
+
+      .alert {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header Section -->
+    {% include 'developer_header.html' %}
+
+    <!-- Breadcrumb Section -->
+    <section class="breadcrumb breadcrumb_bg align-items-center">
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-sm-6">
+            <div class="breadcrumb_tittle">
+              <!-- Optional breadcrumb content -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 text-center">
+            <h2>VIEW BUGS</h2>
+          </div>
+        </div>
+
+        <!-- Bugs Listing Section -->
+        <div class="row">
+          {% if bugs %}
+            {% for bug in bugs %}
+              <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card shadow-sm h-100 d-flex flex-column">
+                  <!-- Card Header -->
+                  <div class="card-header bg-primary text-white">
+                    <h5 class="card-title mb-0">{{ bug.title }}</h5>
+                  </div>
+
+                  <!-- Card Body -->
+                  <div class="card-body flex-grow-1 overflow-auto" style="max-height: 350px;">
+                    <p><strong style="color:black">ID:</strong> {{ bug.id }}</p>
+
+                    <p>
+                      <strong style="color:black">Testcase ID:</strong>
+                      <a href="{% url 'view_testcase_details' bug.testcase_id %}" class="btn btn-outline-primary btn-sm">
+                        {{ bug.testcase_id }}: view testcase<i class="fas fa-arrow-right ml-1"></i>
+                      </a>
+                    </p>
+
+                    <p><strong style="color:black">Description:</strong> {{ bug.description }}</p>
+
+                    <div class="mb-3">
+                      <strong>Screenshot:</strong><br>
+                      <div class="screenshot-container">
+                        <img src="{{ bug.screenshot.url }}" class="screenshot-img" alt="Bug Screenshot" />
+                      </div>
+                    </div>
+
+                    <p><strong style="color:black">Severity:</strong> {{ bug.sevearity }}</p>
+                    <p><strong style="color:black">Priority:</strong> {{ bug.priority }}</p>
+                    <p><strong style="color:black">Reproduction Steps:</strong> {{ bug.reproductionsteps }}</p>
+                    <p><strong style="color:black">Environment:</strong> {{ bug.environment }}</p>
+                    <p><strong style="color:black">Browser:</strong> {{ bug.browser }}</p>
+                    <p><strong style="color:black">OS:</strong> {{ bug.os }}</p>
+                    <p><strong style="color:black">Error Details:</strong> {{ bug.errordetails }}</p>
+                    <p><strong style="color:black">Status:</strong> {{ bug.status }}</p>
+                    <p><strong style="color:black">Date:</strong> {{ bug.date }}</p>
+                  </div>
+
+                  <!-- Card Footer -->
+                  <div class="card-footer d-flex justify-content-between align-items-center">
+                    <div>
+                      <small style="color:black"><strong>Developer:</strong> {{ bug.developer_email }}</small><br>
+                      <small style="color:black"><strong>Tested By:</strong> {{ bug.tested_by_email }}</small>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-end">
+                      <a href="/developer_update_status/{{ bug.id }}" class="btn btn-sm btn-primary mb-2">
+                        <i class="fas fa-edit"></i> Update
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="col-12">
+              <div class="alert alert-danger text-center" role="alert">
+                🚫 No Bugs Found 🚫
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-area">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-sm-6 col-md-3 col-xl-3">
+            <div class="single-footer-widget footer_1">
+              <!-- Footer content -->
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+              <!-- Footer content -->
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+              <!-- Footer content -->
+            </div>
+          </div>
+          <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+              <!-- Footer content -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="copyright_part_text text-center">
+              <div class="row">
+                <div class="col-lg-12">
+                <p class="footer-text m-0" style="color:white">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="{% static 'js/jquery-1.12.1.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+  </body>
+</html>

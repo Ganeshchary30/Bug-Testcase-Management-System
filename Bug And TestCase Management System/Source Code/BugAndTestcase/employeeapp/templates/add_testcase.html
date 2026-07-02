@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Bug And Testcase Management System</title>
+    <link rel="icon" href="{% static 'img/bugs.jpg' %}" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" />
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" />
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}" />
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body>
+    <!--::header part start::-->
+        {% include 'employee_header.html' %}
+
+    <!-- breadcrumb start-->
+    <section class="breadcrumb breadcrumb_bg align-items-center">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-sm-6">
+                    <div class="breadcrumb_tittle">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- breadcrumb start-->
+
+  <!-- ================ contact section start ================= -->
+<section class="contact-section section_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="contact-title">ADD TESTCASE HERE</h2>
+      </div>
+
+      <div class="col-lg-8">
+        <form class="form-contact contact_form" action="{% url 'add_testcase' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          <!-- Title -->
+          <div class="row">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Title:
+                <input class="form-control" type="text" name="senario" placeholder="Enter Title" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Name -->
+          <div class="row">
+            <div class="col-7">
+              Enter Project Name:
+              <select name="project_name" class="form-control" id="projectSelect" onchange="loadreq()" required>
+                <option value="" disabled selected>Select Project</option>
+                {% for details_project in details_project %}
+                  <option value="{{ details_project.title }}">{{ details_project.title }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <!-- Requirements -->
+          <div class="row mt-3">
+            <div class="col-7">
+              Enter Requirements Title:
+              <select name="requirements" class="form-control" id="req" required>
+                <option value="" disabled selected>Select Requirement</option>
+                <!-- Options populated by JS -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Module Name -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Module Name:
+                <input class="form-control" type="text" name="module_name" placeholder="Enter Module Name" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Description:
+                  <textarea class="form-control" type="text" name="description" rows="5" placeholder="Enter Description" required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Data -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Input Data:
+                <input class="form-control" type="text" name="input_data" placeholder="Input Data" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Type of Testcase -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Type Of Testcase:
+                <select name="type_of_exception" class="form-control" required>
+      <option value="" disabled selected hidden>--SELECT--</option>
+                  <option value="Functional">Functional</option>
+                  <option value="Non-Functional">Non-Functional</option>
+                  <option value="GUI">GUI</option>
+                  <option value="DataBases">DataBases</option>
+                  <option value="API">API</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pre Condition -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Pre Condition:
+                <input class="form-control" type="text" name="pre_condition" placeholder="Enter Pre Condition" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expected Result -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Expected Result:
+                <input class="form-control" type="text" name="expected_actual_result" placeholder="Enter Expected Result" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Priority -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Priority:
+                <select name="priority" class="form-control" required>
+                    <option value="" disabled selected hidden>--SELECT--</option>
+                  <option value="high">HIGH</option>
+                  <option value="medium">MEDIUM</option>
+                  <option value="low">LOW</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Test Steps -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Test Steps:
+                <input class="form-control" type="text" name="teststeps" placeholder="Enter Test Steps" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Status:
+                <input class="form-control" type="text" name="status" value="new" readonly required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tester Email -->
+          <div class="row mt-3">
+            <div class="col-sm-7">
+              <div class="form-group">
+                Enter Tester Email:
+                <input class="form-control" type="email" name="tester_email" value="{{ tester_emails }}" readonly required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button class="button mt-4" type="submit">Add Testcases</button>
+
+        </form>
+
+        <!-- Message -->
+        <div class="mt-3">{{ msg }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Script -->
+  <script>
+    function loadreq() {
+      const project = document.getElementById("projectSelect").value;
+      const reqDropdown = document.getElementById("req");
+
+      // Clear previous options
+      reqDropdown.innerHTML = `<option value="" disabled selected>Loading...</option>`;
+
+      const xhttp = new XMLHttpRequest();
+      const endpoint = "{% url 'project_view_requirements' %}?project_title=" + encodeURIComponent(project);
+
+      xhttp.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+          console.log(this.responseText);
+          const responseList = JSON.parse(this.responseText);
+
+          let opts = `<option value="" disabled selected>Select Requirement</option>`;
+          responseList.forEach(item => {
+            opts += `<option value="${item}">${item}</option>`;
+          });
+
+          reqDropdown.innerHTML = opts;
+        }
+      };
+
+      xhttp.open("GET", endpoint, true);
+      xhttp.send();
+    }
+  </script>
+</section>
+
+  <!-- ================ contact section end ================= -->
+
+<!-- footer part start-->
+<footer class="footer-area">
+    <div class="container">
+        <div class="row justify-content-between">
+        <div class="col-sm-6 col-md-3 col-xl-3">
+            <div class="single-footer-widget footer_1">
+<!--            <a href="{% url 'index' %}">-->
+<!--                <img src="{% static 'img/footer_logo.png' %}" alt="" />-->
+<!--            </a>-->
+<!--            <ul>-->
+<!--                <li><a href="#">Work</a></li>-->
+<!--                <li><a href="#">Services</a></li>-->
+<!--                <li><a href="#">Contact</a></li>-->
+<!--            </ul>-->
+<!--            <div class="social_icon">-->
+<!--                <a href="#"><i class="ti-facebook"></i></a>-->
+<!--                <a href="#"><i class="ti-twitter-alt"></i></a>-->
+<!--                <a href="#"><i class="ti-dribbble"></i></a>-->
+<!--                <a href="#"><i class="ti-instagram"></i></a>-->
+<!--            </div>-->
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+<!--            <h4>Company</h4>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                <a href="#">Media</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">Carrier</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">Testimonials</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">FAQ</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+<!--            <h4>Resources</h4>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                <a href="#">UI kit</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">WordPress theme</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">Illustration</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+<!--            <div class="single_contact_info">-->
+<!--                <h3>London - UK</h3>-->
+<!--                <p>127, Manchaster city, London</p>-->
+<!--                <p>+008 728 362 278</p>-->
+<!--            </div>-->
+<!--            <div class="single_contact_info">-->
+<!--                <h3>New York - USA</h3>-->
+<!--                <p>127, Manchaster city, London</p>-->
+<!--                <p>+008 728 362 278</p>-->
+<!--            </div>-->
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-lg-12">
+            <div class="copyright_part_text text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                <p class="footer-text m-0" style="color:white">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- footer part end-->
+
+    <!-- jquery plugins here-->
+    <script src="{% static 'js/jquery-1.12.1.min.js' %}"></script>
+    <!-- popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- easing js -->
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <!-- isotope js -->
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <!-- particles js -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+
+    <!--contact js-->
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
+
+ <style>
+      /* Babe, here’s your smaller footer styling 😎 */
+      .footer-area {
+        padding: 20px 0; /* Reduced padding */
+        background-color: #f8f8f8; /* Optional: light background */
+      }
+
+      .footer-area .single-footer-widget {
+        margin-bottom: 10px; /* Less margin between widgets */
+      }
+
+      .copyright_part_text {
+        padding: 10px 0; /* Smaller padding */
+        font-size: 14px; /* Smaller font */
+      }
+
+      .copyright_part_text p {
+        margin: 0;
+        color: #555; /* Optional: softer text color */
+        text-align: center;
+      }
+
+      /* Optional: shrink the footer icon image */
+      .animation_icon_2 {
+        width: 60px; /* smaller size */
+        height: auto;
+      }
+    </style>

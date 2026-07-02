@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Bug And Testcase Management System</title>
+
+    <link rel="icon" href="{% static 'img/bugs.jpg' %}" />
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    <style>
+      /* Babe, here’s your smaller footer styling 😎 */
+      .footer-area {
+        padding: 20px 0; /* Reduced padding */
+        background-color: #f8f8f8; /* Optional: light background */
+      }
+
+      .footer-area .single-footer-widget {
+        margin-bottom: 10px; /* Less margin between widgets */
+      }
+
+      .copyright_part_text {
+        padding: 10px 0; /* Smaller padding */
+        font-size: 14px; /* Smaller font */
+      }
+
+      .copyright_part_text p {
+        margin: 0;
+        color: #555; /* Optional: softer text color */
+        text-align: center;
+      }
+
+      /* Optional: shrink the footer icon image */
+      .animation_icon_2 {
+        width: 60px; /* smaller size */
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header part start -->
+    {% include 'analyst_header.html' %}
+    <!-- Header part end -->
+
+    <!-- Banner part start -->
+    <section class="banner_part">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 offset-lg-1">
+            <div class="banner_text">
+              <div class="banner_text_iner">
+<!--                <h5>Analyst Home</h5>-->
+                <h1>Bug and Testcase Management System</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+        <br>
+
+                              <center><h2>ANALYST HOME</h2></center>
+
+
+     <section class="about_part ">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+                <div class="col-md-6">
+                    <div class="about_part_text">
+<!--                        <h5>About Us</h5>-->
+                        <h2>Digital design and development company</h2>
+                        <p>
+                            We help manage bugs and test cases effectively. Enhance your project management workflow with our intuitive tools and detailed reports.
+                        </p>
+                        <a href="#" class="btn_1">Explore Us</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about_part_img">
+                        <img src="{% static 'img/about_part_img.png' %}" alt="About Image" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+     <br>
+    <br>
+    <br>
+    <!-- About End -->
+  <!-- Our Services Section -->
+<section class="our_service ">
+    <div class="container">
+        <div class="row g-4">
+
+            <!-- Service Box 1 -->
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+                <div class="single_feature w-100">
+                    <div class="single_service p-4 d-flex flex-column text-center shadow rounded" style="min-height: 320px;">
+                        <span class="fs-2 fw-bold text-primary mb-3">01</span>
+                        <h4 class="mb-3">User Experience Design</h4>
+                        <p class="flex-grow-1">Design intuitive and user-friendly interfaces for better usability.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><a href="#">Branding and Identity</a></li>
+                            <li><a href="#">Mobile App</a></li>
+                            <li><a href="#">Web Design</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Box 2 -->
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+                <div class="single_feature w-100">
+                    <div class="single_service p-4 d-flex flex-column text-center shadow rounded" style="min-height: 320px;">
+                        <span class="fs-2 fw-bold text-primary mb-3">02</span>
+                        <h4 class="mb-3">Web and App Development</h4>
+                        <p class="flex-grow-1">Develop scalable and high-performance web and mobile applications.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><a href="#">WordPress</a></li>
+                            <li><a href="#">iOS & Android</a></li>
+                            <li><a href="#">Front End</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Service Box 3 -->
+            <div class="col-md-6 col-lg-4 d-flex align-items-stretch">
+                <div class="single_feature w-100">
+                    <div class="single_service p-4 d-flex flex-column text-center shadow rounded" style="min-height: 320px;">
+                        <span class="fs-2 fw-bold text-primary mb-3">03</span>
+                        <h4 class="mb-3">Digital and Innovative Marketing</h4>
+                        <p class="flex-grow-1">Reach your target audience with innovative digital marketing strategies.</p>
+                        <ul class="list-unstyled mt-3">
+                            <li><a href="#">Lead Generation</a></li>
+                            <li><a href="#">Social Media</a></li>
+                            <li><a href="#">Email Marketing</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .single_service {
+        min-height: 100%; /* Ensures all cards stretch equally */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .single_service p {
+        flex-grow: 1; /* Ensures equal spacing in all cards */
+    }
+
+    .single_feature {
+        height: 100%; /* Ensures the feature box also stretches */
+    }
+</style>
+
+    <!-- Services End -->
+
+    <!-- Our Projects Section -->
+    <section class="our_project section_padding" id="portfolio">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-lg-4">
+                    <div class="section_tittle">
+                        <p>Our Project</p>
+                        <h2>Our Projects</h2>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="filters portfolio-filter project_menu_item">
+                        <ul>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".buildings">Web Design</li>
+                            <li data-filter=".rebuild">Mobile App</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="more_btn d-none d-md-block">
+                        <a href="#" class="more_btn_iner">More Projects</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filters-content">
+                <div class="row justify-content-between portfolio-grid">
+                    <div class="col-lg-6 col-sm-6 all buildings">
+                        <div class="single_our_project">
+                            <div class="single_offer">
+                                <img src="{% static 'img/project_1.png' %}" alt="Project 1" />
+                                <div class="hover_text">
+                                    <p>Web Development</p>
+                                    <a href="#"><h2>Web Design & Development</h2></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6 all rebuild">
+                        <div class="single_our_project">
+                            <div class="single_offer">
+                                <img src="{% static 'img/project_2.png' %}" alt="Project 2" />
+                                <div class="hover_text">
+                                    <p>Mobile App</p>
+                                    <a href="#"><h2>iOS & Android App</h2></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="{% static 'img/animate_icon/icon_2.png' %}" class="animation_icon_2" alt="Animated Icon">
+    </section>
+
+
+
+    <!-- Banner part end -->
+
+    <!-- Footer part start -->
+
+<!-- footer part start-->
+<footer class="footer-area">
+    <div class="container">
+        <div class="row justify-content-between">
+        <div class="col-sm-6 col-md-3 col-xl-3">
+            <div class="single-footer-widget footer_1">
+<!--            <a href="{% url 'index' %}">-->
+<!--                <img src="{% static 'img/footer_logo.png' %}" alt="" />-->
+<!--            </a>-->
+<!--            <ul>-->
+<!--                <li><a href="#">Work</a></li>-->
+<!--                <li><a href="#">Services</a></li>-->
+<!--                <li><a href="#">Contact</a></li>-->
+<!--            </ul>-->
+<!--            <div class="social_icon">-->
+<!--                <a href="#"><i class="ti-facebook"></i></a>-->
+<!--                <a href="#"><i class="ti-twitter-alt"></i></a>-->
+<!--                <a href="#"><i class="ti-dribbble"></i></a>-->
+<!--                <a href="#"><i class="ti-instagram"></i></a>-->
+<!--            </div>-->
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+<!--            <h4>Company</h4>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                <a href="#">Media</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">Carrier</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">Testimonials</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">FAQ</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+<!--            <h4>Resources</h4>-->
+<!--            <ul>-->
+<!--                <li>-->
+<!--                <a href="#">UI kit</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">WordPress theme</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                <a href="#">Illustration</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+            </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-md-3">
+            <div class="single-footer-widget footer_2">
+<!--            <div class="single_contact_info">-->
+<!--                <h3>London - UK</h3>-->
+<!--                <p>127, Manchaster city, London</p>-->
+<!--                <p>+008 728 362 278</p>-->
+<!--            </div>-->
+<!--            <div class="single_contact_info">-->
+<!--                <h3>New York - USA</h3>-->
+<!--                <p>127, Manchaster city, London</p>-->
+<!--                <p>+008 728 362 278</p>-->
+<!--            </div>-->
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-lg-12">
+            <div class="copyright_part_text text-center">
+            <div class="row">
+                <div class="col-lg-12">
+                <p class="footer-text m-0" style="color:white">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All Rights Reserved
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+    <!-- footer part end-->
+
+    <!-- jquery plugins here-->
+    <script src="{% static 'js/jquery-1.12.1.min.js' %}"></script>
+    <!-- popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- easing js -->
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <!-- isotope js -->
+    <script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+    <!-- particles js -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <!--<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>-->
+    <!--contact js-->
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
+
+
+ <style>
+      /* Babe, here’s your smaller footer styling 😎 */
+      .footer-area {
+        padding: 20px 0; /* Reduced padding */
+        background-color: #f8f8f8; /* Optional: light background */
+      }
+
+      .footer-area .single-footer-widget {
+        margin-bottom: 10px; /* Less margin between widgets */
+      }
+
+      .copyright_part_text {
+        padding: 10px 0; /* Smaller padding */
+        font-size: 14px; /* Smaller font */
+      }
+
+      .copyright_part_text p {
+        margin: 0;
+        color: #555; /* Optional: softer text color */
+        text-align: center;
+      }
+
+      /* Optional: shrink the footer icon image */
+      .animation_icon_2 {
+        width: 60px; /* smaller size */
+        height: auto;
+      }
+    </style>
+
+
+
+
