@@ -8,12 +8,12 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    sys.path.insert(0, os.path.join(current_dir, 'apps'))
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BugAndTestcase.settings')
     try:
         from django.core.management import execute_from_command_line
         import django
-        import MySQLdb
-
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "
